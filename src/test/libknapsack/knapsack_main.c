@@ -5,9 +5,7 @@
 
 int main() {
   int N;
-  tuple_t *arr;
+  tuple_t *arr, *max_subset_arr;
 
-  arr = (tuple_t*) malloc(getLinesFile(INPUT_1)*sizeof(tuple_t));
 
-  
 }

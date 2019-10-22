@@ -3,7 +3,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "../../libknapsack/includes/knapsack.h"
 
-int getLinesFile(char *str);
+
+int get_lines_file(char *str);
+void read_from_file(char *str, tuple_t **arr);
 
 #endif
