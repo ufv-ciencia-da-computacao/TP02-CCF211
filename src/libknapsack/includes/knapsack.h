@@ -1,7 +1,6 @@
 #ifndef __KNAPSACK_H__
 #define __KNAPSACK_H__
 
-
 typedef struct tuple{
   int id;
   int weight;

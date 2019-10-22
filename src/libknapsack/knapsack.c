@@ -1,4 +1,4 @@
-#include "./includes/knapsack.h"
+#include "../includes/knapsack.h"
 
 static int sum_weight(tuple_t *arr, int length) {
   int sum = 0;
@@ -35,5 +35,5 @@ static void combination_util(tuple_t *arr, tuple_t *data, tuple_t **maxSubsetArr
 void knapsack_algorithm(tuple_t *arr, tuple_t **maxSubsetArr, int n, int lengthSubset) {  
   tuple_t data[lengthSubset];  
   
-  combinationUtil(arr, maxSubsetArr, data, 0, n-1, 0, lengthSubset);  
+  combination_util(arr, maxSubsetArr, data, 0, n-1, 0, lengthSubset);  
 }  
