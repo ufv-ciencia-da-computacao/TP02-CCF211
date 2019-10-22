@@ -5,6 +5,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-double benchmark(void (*sorting_algorithm)(void), ...);
+double benchmark(void (*algorithm)(void), ...);
 
 #endif
