@@ -7,6 +7,6 @@
 
 
 int get_lines_file(char *str);
-void read_from_file(char *str, tuple_t **arr);
+void read_from_file(tuple_t **arr, int *qtdItems, char *str);
 
 #endif
