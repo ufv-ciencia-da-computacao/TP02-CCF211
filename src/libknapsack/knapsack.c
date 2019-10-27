@@ -31,7 +31,12 @@ static void max_subset_arr(tuple_t **maxSubsetArr, tuple_t *data, int lengthSubs
   int sumValueSubsetArr = sum_value(*maxSubsetArr, lengthSubset);
   int sumValueData = sum_value(data, lengthSubset);
 
-  if (sumValueSubsetArr < sumValueData && sum_weight(data, lengthSubset) <= knapsackSize){
+  int numBytesMaxSubsetArr = (sizeof(*maxSubsetArr)/sizeof((*maxSubsetArr)[0]));
+  int numBytesData = (sizeof(data)/sizeof(data[0]));
+
+  if (sum_weight(data, lengthSubset) <= knapsackSize &&
+    (sumValueSubsetArr < sumValueData ||
+    sumValueSubsetArr == sumValueData && numBytesData > numBytesMaxSubsetArr)){
     tuplecpy(maxSubsetArr, data, lengthSubset);
   }
 }
@@ -54,11 +59,23 @@ static void combination_util(tuple_t *arr, tuple_t *data, tuple_t **maxSubsetArr
     }  
 }
 
-void knapsack_algorithm(tuple_t *arr, tuple_t **maxSubsetArr, int n, int r, int knapsackSize) {  
-  tuple_t data[r];  
+void knapsack_algorithm(tuple_t *arr, tuple_t **maxSubsetArr, int n, int knapsackSize) {
+  tuple_t **maxResultKnapsackUtil;
+
+  maxResultKnapsackUtil = (tuple_t**) malloc (knapsackSize * sizeof(tuple_t*));
+
+  for (int i = 1; i <= knapsackSize; i++) {
+    int r = i;
+    tuple_t data[r];  
+
+    tuple_arr_init(&((maxResultKnapsackUtil)[i-1]), r);
+    combination_util(arr, data, &((maxResultKnapsackUtil)[i-1]), 0, n-1, 0, r, knapsackSize);
+  }
   
-  combination_util(arr, data, maxSubsetArr, 0, n-1, 0, r, knapsackSize);  
-}  
+  for (int i = 1; i <= knapsackSize; i++) {
+    max_subset_arr(maxSubsetArr, (maxResultKnapsackUtil)[i-1], i, knapsackSize);
+  }
+}
 
 void tuple_init(tuple_t *tuple, int weight, int value) {
   tuple->value = value;
@@ -69,7 +86,7 @@ void tuple_arr_init(tuple_t **tuple, int size) {
   (*tuple) = (tuple_t*) malloc (size * sizeof(tuple_t));
 
   for (int i = 0; i < size; i++) {
-    tuple_init(&((*tuple)[i]), i, 0);
+    tuple_init(&((*tuple)[i]), 0, 0);
   }
 }
 
