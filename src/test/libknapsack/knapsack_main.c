@@ -15,7 +15,7 @@ int main() {
   printf("N: %d\n", N);
 
   for (int i = 0; i < get_lines_file(INPUT_1)-1; i++) {
-    printf("Id: %d | weight: %d\n", arr[i].id, arr[i].weight);
+    printf("Weight: %d | Value: %d\n", arr[i].weight, arr[i].value);
   }
 
   tuple_t *maxSubsetArr;
@@ -24,10 +24,10 @@ int main() {
 
   printf("\n-------knapsack algorithm-------\n");
 
-  knapsack_algorithm(arr, &maxSubsetArr, lines, r);
+  knapsack_algorithm(arr, &maxSubsetArr, lines, r, N);
 
   for (int i = 0; i < r; i++) {
-    printf("Id: %d | weight: %d\n", maxSubsetArr[i].id, maxSubsetArr[i].weight);
+    printf("Weight: %d | Value: %d\n", maxSubsetArr[i].weight, maxSubsetArr[i].value);
   }
 
 }
