@@ -27,9 +27,9 @@ void read_from_file(tuple_t **arr, int *qtdItems, char *str) {
       fscanf(file, "%d", qtdItems);
       cont++;
     } else {
-      int id, weight;
-      fscanf(file, "%d %d", &id, &weight);
-      tuple_init(&((*arr)[cont-1]), id, weight);
+      int value, weight;
+      fscanf(file, "%d %d", &weight, &value);
+      tuple_init(&((*arr)[cont-1]), weight, value);
       cont++;
     }
   }
