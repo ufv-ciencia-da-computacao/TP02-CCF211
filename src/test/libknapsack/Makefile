@@ -14,4 +14,4 @@ knapsack_main.o: knapsack_main.c
 	gcc -c knapsack_main.c -o knapsack_main.o
 
 clear:
-	rm *.o
+	del *.o

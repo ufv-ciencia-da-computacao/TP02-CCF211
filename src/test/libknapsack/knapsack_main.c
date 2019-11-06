@@ -4,22 +4,26 @@
 #include <time.h>
 
 #define INPUT_10 "../../input/10.txt"
+#define INPUT_20 "../../input/20.txt"
+#define INPUT_23 "../../input/23.txt"
+#define INPUT_25 "../../input/25.txt"
 #define INPUT_50 "../../input/50.txt"
 #define INPUT_80 "../../input/80.txt"
 #define INPUT_100 "../../input/100.txt"
 
-int main() {
-  int C, N = get_lines_file(INPUT_50)-1;
-  tuple_t *arr;
+#define C 40
 
-  tuple_arr_init(&arr, N);
-  read_from_file(&arr, &C, INPUT_50);
+int main() {
+  int N, size;
+  tuple_t *arr;
 
   printf("-------read from file-------\n");
   
-  printf("C: %d\n", C);
+  read_from_file(&arr, &N, INPUT_25);
+  
+  printf("C: %d\nN: %d\n", C, N);
 
-  for (int i = 0; i < N-1; i++) {
+  for (int i = 0; i < N; i++) {
     printf("Weight: %d | Value: %d\n", arr[i].weight, arr[i].value);
   }  
 
@@ -36,11 +40,11 @@ int main() {
   t = clock() - t; 
   double time_taken = ((double)t)/CLOCKS_PER_SEC;
 
-  printf("knapsack_algorithm() took %f seconds to execute \n", time_taken);
+  printf("knapsack_algorithm() took %f seconds to execute \n\n", time_taken);
 
   for (int i = 0; i < N; i++) {
     if (maxSubsetArr[i].weight != 0) {
       printf("Weight: %d | Value: %d\n", maxSubsetArr[i].weight, maxSubsetArr[i].value);
-    }    
+    }
   }
 }
