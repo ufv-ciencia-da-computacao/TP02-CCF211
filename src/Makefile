@@ -14,4 +14,5 @@ main.o: main.c
 	gcc -c main.c -o main.o
 
 clear:
-	del *.o
+	rm *.o
+	# del *.o

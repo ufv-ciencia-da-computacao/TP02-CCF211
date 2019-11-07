@@ -43,6 +43,6 @@ int main() {
   }
   printf("\n\n");
 
-  tuple_arr_free(maxSubsetArr);
   tuple_arr_free(arr);
+  tuple_arr_free(maxSubsetArr);
 }
